@@ -1,5 +1,5 @@
 # New function for getting the blacklist as a set of strings.
-def getBlacklist(cursor) -> set:
+def getBlacklist(mycursor) -> set:
     mycursor.execute(
         "SELECT * FROM blacklist")
     myresult = mycursor.fetchall()
@@ -9,7 +9,7 @@ def getBlacklist(cursor) -> set:
    
         
 # New function for getting the supporters as a set of strings.
-def getSupporters(cursor) -> set:
+def getSupporters(mycursor) -> set:
     mycursor.execute(
         "SELECT * FROM supporter")
     myresult = mycursor.fetchall()
@@ -18,13 +18,13 @@ def getSupporters(cursor) -> set:
     return usernames
         
 
-def retrieveLastSeenId(cursor) -> int:
+def retrieveLastSeenId(mycursor) -> int:
     mycursor.execute("SELECT * FROM tweet")
     myresult = mycursor.fetchall()
     return myresult[0][1]
 
 
-def storeLastSeenId(cursor, lastSeenId: int) -> None:
+def storeLastSeenId(mycursor, lastSeenId: int) -> None:
     exampleId: int = (lastSeenId)
     mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
     mydb.commit()
@@ -32,7 +32,7 @@ def storeLastSeenId(cursor, lastSeenId: int) -> None:
     return
 
 
-def main(cursor, myQuery: str) -> None:
+def main(mycursor, myQuery: str) -> None:
     # Obtain last seen tweet
     lastSeenId: int = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
