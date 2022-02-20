@@ -1,4 +1,4 @@
-'''
+code '''
 These classes are used to mimic some of the behavior of tweets obtained using the tweepy library (found at https://github.com/tweepy/tweepy) in order
 to perform functionality tests in a local environment or in a server environment. The motivation is to perform testing without affecting databases
 or wasting API calls.
